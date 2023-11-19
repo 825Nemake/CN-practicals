@@ -1,0 +1,42 @@
+import socket
+
+def ip_to_url(ip_address):
+    try:
+        url = socket.gethostbyaddr(ip_address)
+        return url[0]
+    except socket.herror as e:
+        return f"Error:{e}"
+def url_to_ip(url):
+    try:
+        ip_address = socket.gethostbyname(url)
+        return ip_address
+    except socket.herror as e:
+        return f"Error:{e}"
+        
+def url_config():
+    url = input("Enter the url ")
+    ip_address = url_to_ip(url)
+    print(f"IP_address for {url}:{ip_address}")
+    
+          
+    
+def ip_config():
+    ip_address = input("Enter the IP address")
+    url = ip_to_url(ip_address)
+    print(f"URL for {ip_address}:{url}")
+    
+def main():
+    print("""1.IP to URL \n2. URL to IP""")
+    choice = int(input("Enter the method you want to select:"))
+    
+    
+    if choice == 1:
+        ip_config()
+    elif choice == 2:
+        url_config()
+    else:
+        print("Value not valid")
+    
+          
+if __name__ == "__main__":
+          main()
